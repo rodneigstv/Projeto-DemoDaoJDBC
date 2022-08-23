@@ -1,5 +1,7 @@
 package apllication;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import model.dao.DaoFactory;
@@ -11,6 +13,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
 		System.out.println("===== TEST 1: seller findById =====");
@@ -31,6 +34,9 @@ public class Program {
 			System.out.println(obj);
 		}
 		
-		
+		System.out.println("\n===== TEST 4: seller insert =====");
+		Seller newSeller = new Seller(null, "Jose Jaemerson", "josejds@gmail.com", new Date(), 5000.0, department);
+		sellerDao.insert(newSeller);
+		System.out.println("Inserted! New id: " + newSeller);
 	}
 }
